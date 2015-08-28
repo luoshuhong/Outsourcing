@@ -1,0 +1,29 @@
+{
+  "name": "meilidujuan",
+  "version": "1.0.0.1",
+  "homepage": "http://www.meilidujuan.com",
+  "authors": [
+    "liujintao<liujintao.china@gmail.com>"
+  ],
+  "description": "meilidujuan trip fe",
+  "main": "app.js",
+  "keywords": [
+    "meilidujuan",
+    "fis",
+    "react"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.13.3",
+    "react-router": "~0.13.3",
+    "reflux": "~0.2.12",
+    "jquery": "~2.1.4"
+  }
+}

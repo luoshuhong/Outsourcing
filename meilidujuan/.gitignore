@@ -7,3 +7,5 @@ gen/
 .classpath
 .project
 .metadata/
+
+src/main/resources/config.properties
