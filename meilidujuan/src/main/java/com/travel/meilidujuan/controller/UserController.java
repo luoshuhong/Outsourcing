@@ -15,7 +15,6 @@ import com.alibaba.fastjson.JSONObject;
 public class UserController {
 	
 	@RequestMapping(method=RequestMethod.POST)
-//	@RequestMapping("/add")
     @ResponseBody
     public String add(HttpServletRequest request, HttpServletResponse response){
 		JSONObject job = new JSONObject();
@@ -26,7 +25,6 @@ public class UserController {
     }
 	
 	@RequestMapping(method=RequestMethod.DELETE)
-//	@RequestMapping("/del")
     @ResponseBody
     public String del(HttpServletRequest request, HttpServletResponse response){
 		JSONObject job = new JSONObject();
@@ -37,7 +35,6 @@ public class UserController {
     }
 	
 	@RequestMapping(method=RequestMethod.PATCH)
-//	@RequestMapping("/update")
     @ResponseBody
     public String update(HttpServletRequest request, HttpServletResponse response){
 		JSONObject job = new JSONObject();
@@ -48,7 +45,6 @@ public class UserController {
     }
 	
 	@RequestMapping(method=RequestMethod.GET)
-//	@RequestMapping("/query")
     @ResponseBody
     public String query(HttpServletRequest request, HttpServletResponse response){
 		JSONObject job = new JSONObject();
