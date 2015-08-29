@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
+import com.travel.meilidujuan.model.User;
 
 @Controller
 @RequestMapping("/user")
@@ -49,6 +50,7 @@ public class UserController {
     public String query(HttpServletRequest request, HttpServletResponse response){
 		JSONObject job = new JSONObject();
 		String data = request.getParameter("data");
+		System.out.println(request.getParameterMap());
         job.put("result", "success---query");
         System.out.println("---query");
         return job.toJSONString();
