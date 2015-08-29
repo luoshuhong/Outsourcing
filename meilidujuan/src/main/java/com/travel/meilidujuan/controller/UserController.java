@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
+import com.travel.meilidujuan.model.User;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 	
 	@RequestMapping(method=RequestMethod.POST)
-//	@RequestMapping("/add")
     @ResponseBody
     public String add(HttpServletRequest request, HttpServletResponse response){
 		JSONObject job = new JSONObject();
@@ -26,7 +26,6 @@ public class UserController {
     }
 	
 	@RequestMapping(method=RequestMethod.DELETE)
-//	@RequestMapping("/del")
     @ResponseBody
     public String del(HttpServletRequest request, HttpServletResponse response){
 		JSONObject job = new JSONObject();
@@ -37,7 +36,6 @@ public class UserController {
     }
 	
 	@RequestMapping(method=RequestMethod.PATCH)
-//	@RequestMapping("/update")
     @ResponseBody
     public String update(HttpServletRequest request, HttpServletResponse response){
 		JSONObject job = new JSONObject();
@@ -48,11 +46,11 @@ public class UserController {
     }
 	
 	@RequestMapping(method=RequestMethod.GET)
-//	@RequestMapping("/query")
     @ResponseBody
     public String query(HttpServletRequest request, HttpServletResponse response){
 		JSONObject job = new JSONObject();
 		String data = request.getParameter("data");
+		System.out.println(request.getParameterMap());
         job.put("result", "success---query");
         System.out.println("---query");
         return job.toJSONString();
