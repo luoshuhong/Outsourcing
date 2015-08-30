@@ -16,6 +16,7 @@ public class Image {
 //			  `des` varchar(255) default NULL COMMENT '描述',
 //			  `add_date` timestamp NOT NULL default '0000-00-00 00:00:00' COMMENT '添加时间',
 //			  `type` int(2) default '0' COMMENT '类型 0：图片 1：视频',
+//	          `group_id` int(11) default -1 COMMENT '所属组id 0:组封面 其他表示封面图片id',
 //			  PRIMARY KEY  (`id`)
 //			) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 	private int id;
@@ -23,7 +24,7 @@ public class Image {
 	private String des;     //描述
 	private Date   addDate; //添加时间
 	private int    type;    //类型 0：图片  1：视频
-	
+	private int    groupId; //'所属组id 0:组封面 其他表示封面图片id'
 	public int getId() {
 		return id;
 	}
@@ -54,4 +55,11 @@ public class Image {
 	public void setAddDate(Date addDate) {
 		this.addDate = addDate;
 	}
+	public int getGroupId() {
+		return groupId;
+	}
+	public void setGroupId(int groupId) {
+		this.groupId = groupId;
+	}
+	
 }	

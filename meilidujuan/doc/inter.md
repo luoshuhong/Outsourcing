@@ -26,6 +26,7 @@
 	String des;     //描述
 	Date   addDate; //添加时间
 	int    type;    //类型 0：图片  1：视频
+	int    groupId; //'所属组id    0:组封面 其他表示封面图片id'
    ```
 ##文章操作
 ####url: 
