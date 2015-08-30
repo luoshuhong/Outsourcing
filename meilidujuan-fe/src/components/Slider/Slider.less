@@ -1,3 +1,66 @@
 .Slider{
-
+  .picScroll-top{
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    .hd {
+      overflow: hidden;
+      height: 20px;
+      background: #fff;
+      padding: 5px 10px;
+      line-height: 20px;
+      .prevStop {
+        background-position: -60px -100px;
+      }
+      .nextStop {
+        background-position: -60px -140px;
+      }
+      ul {
+        float: right;
+        overflow: hidden;
+        zoom: 1;
+        margin-top: 10px;
+        zoom: 1;
+        li {
+          float: left;
+          width: 20px;
+          height: 9px;
+          overflow: hidden;
+          margin-right: 5px;
+          text-indent: -999px;
+          cursor: pointer;
+          background: url("http://aawooo.com/images/icoCircle.gif") 0 -9px no-repeat;
+        }
+        li.on {
+          background-position: 0 0;
+        }
+      }
+    }
+    .bd {
+      padding: 5px;
+      ul {
+        overflow: hidden;
+        zoom: 1;
+        li {
+          text-align: center;
+          zoom: 1;
+          .pic {
+            text-align: center;
+            img {
+              width: 95%;
+              height:240px;
+              display: block;
+              padding: 1px;
+              border: 1px solid #ccc;
+            }
+          }
+          .title {
+            line-height: 24px;
+            font-size:12px;
+          }
+        }
+      }
+    }
+  }
 }

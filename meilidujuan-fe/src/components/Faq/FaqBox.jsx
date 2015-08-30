@@ -5,9 +5,8 @@
         var CommentBox = React.createClass({
             render:function(){
                 return(
-                    <div className={"commentBox"}>
-                        Hello, world! I am a CommentBox.
-                        <h1>comments</h1>
+                    <div className={"FaqBox"}>
+                        <h1>旅客问答</h1>
                         <FaqList/>
                     </div>);
             }

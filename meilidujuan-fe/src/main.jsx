@@ -12,7 +12,10 @@ define(['react',
         "components/NoteBox.jsx",
         "components/LeftSidebar.jsx",
         "components/Contact/ContactForm.jsx",
-        "components/BestPlan/BestPlan.jsx"
+        "components/BestPlan/BestPlan.jsx",
+        "components/Order/OrderForm.jsx",
+        "components/Leader/Leader.jsx",
+        "components/RentCar/RentCar.jsx"
     ],function(React,
                Header,
                Footer,
@@ -26,7 +29,10 @@ define(['react',
                NoteBox,
                LeftSidebar,
                ContactForm,
-               BestPlan
+               BestPlan,
+               OrderForm,
+               Leader,
+               RentCar
     ){
         var Route = ReactRouter.Route;
         var DefaultRoute = ReactRouter.DefaultRoute;
@@ -51,12 +57,14 @@ define(['react',
                 <Route path="/" handler={Main}>
                     <DefaultRoute handler={Welcome}/>
                     <Route path="bestplan" name="bestplan" handler={BestPlan}/>
-                    <Route path="musics" name="musicList" handler={MusicList}/>
+                    <Route path="order/:id/:name" name="order" handler={OrderForm}/>
                     //<Route path="profile" name="profile" handler={Profile}/>
                     <Route path="notes" name="notes" handler={NoteBox}/>
                     <Route path="login" name="login" handler={LoginBox}/>
                     <Route path="contactus" name="contactus" handler={ContactForm}/>
+                    <Route path="leaders" name="leaders" handler={Leader}/>
                     <Route path="faq" name="faq" handler={FaqBox}/>
+                    <Route path="rentcar" name="rentcar" handler={RentCar}/>
                 </Route>
         );
         ReactRouter.run(routes, ReactRouter.HashLocation, function (Handler) {

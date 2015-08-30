@@ -11,7 +11,8 @@
     "reflux":"/bower_components/reflux/dist/reflux",
     "react-router":"/bower_components/react-router/build/umd/ReactRouter",
     "handlebars.runtime":"/bower_components/handlebars/handlebars.runtime.amd",
-    "utils":"/common/lib/utils"
+    "utils":"/common/lib/utils",
+    "TouchSlide":"/common/lib/TouchSlide"
   },
   "shim":{
     "backbone":{
@@ -19,6 +20,9 @@
     },
     "jquery":{
       "exports":"$"
+    },
+    "TouchSlide":{
+      "exports":"TouchSlide"
     }
   }
 }

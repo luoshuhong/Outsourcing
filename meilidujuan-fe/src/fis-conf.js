@@ -37,6 +37,7 @@ fis.match('{/bower_components/**/*.js,/common/lib/**/*.js,/common/lib/*.js,/comm
     release:'/static/vendor/vendor.js',
     packTo:'/static/vendor/vendor.js'
 });
+
 fis.match('/bower_components/requirejs/require.js',{
     isMod:false,
     release:'/static/vendor/require.js',
