@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
+import com.travel.meilidujuan.model.User;
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/article")
+public class ArticleController {
 	
 	@RequestMapping(method=RequestMethod.POST)
     @ResponseBody

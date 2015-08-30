@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/rentCar")
+public class RentCarController {
 	
 	@RequestMapping(method=RequestMethod.POST)
     @ResponseBody
