@@ -1,8 +1,8 @@
 /**
  * Created by liunickluck on 15/5/27.
  */
-    define(['react','components/EvaluateList.jsx','jquery'],function(React,EvaluateList,$){
-        var Comment = React.createClass({
+    define(['react','jquery'],function(React,$){
+        var Faq = React.createClass({
             componentDidMount:function(){
                 var _this = this;
                 this.timer = setTimeout(function(){
@@ -24,9 +24,8 @@
                         <span className="desciption">{this.props.children}</span>
                     </div>
                     <div className="updateTime">{this.state.time}</div>
-                    <EvaluateList/>
                 </li>);
             }
         });
-        return Comment;
+        return Faq;
     });

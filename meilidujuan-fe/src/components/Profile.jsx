@@ -1,7 +1,7 @@
 /**
  * Created by liunickluck on 15/7/9.
  */
-    define(['react',"components/ContactBox.jsx",'react-router'],function(React,ContactBox,ReactRouter){
+    define(['react','react-router'],function(React,ReactRouter){
 
         var Profile = React.createClass({
             getInitialState:function(){
@@ -9,7 +9,6 @@
             },
             render:function(){
                 return(<div className="profile-ctn">
-                    <ContactBox/>
                 </div>);
             }
         });

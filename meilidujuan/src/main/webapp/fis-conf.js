@@ -42,6 +42,9 @@ fis.match('/bower_components/requirejs/require.js',{
     release:'/static/vendor/require.js',
     packTo:'/static/vendor/require.js'
 });
+fis.match('/common/lib/mui.min.js',{
+    isMod:false
+});
 fis.match('/bower_components/handlebars/handlebars.runtime.amd.js',{
     isMod:false,
     release:'/static/vendor/handlebars.js',

@@ -1,4 +1,4 @@
-define(['react','jquery','components/Comment.jsx','react-router'],function(React,$,Comment,ReactRouter){
+define(['react','jquery','components/Faq/Faq.jsx'],function(React,$,Comment){
     var CommentList = React.createClass({
         getInitialState:function(){
             return {};
