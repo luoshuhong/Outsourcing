@@ -15,7 +15,8 @@ define(['react',
         "components/BestPlan/BestPlan.jsx",
         "components/Order/OrderForm.jsx",
         "components/Leader/Leader.jsx",
-        "components/RentCar/RentCar.jsx"
+        "components/RentCar/RentCar.jsx",
+        "components/PictureFlow/PictureFlow"
     ],function(React,
                Header,
                Footer,
@@ -32,7 +33,8 @@ define(['react',
                BestPlan,
                OrderForm,
                Leader,
-               RentCar
+               RentCar,
+               PictureFlow
     ){
         var Route = ReactRouter.Route;
         var DefaultRoute = ReactRouter.DefaultRoute;
@@ -65,6 +67,7 @@ define(['react',
                     <Route path="leaders" name="leaders" handler={Leader}/>
                     <Route path="faq" name="faq" handler={FaqBox}/>
                     <Route path="rentcar" name="rentcar" handler={RentCar}/>
+                    <Route path="activity" name="activity" handler={PictureFlow}/>
                 </Route>
         );
         ReactRouter.run(routes, ReactRouter.HashLocation, function (Handler) {

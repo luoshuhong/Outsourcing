@@ -5,44 +5,44 @@
 define(function (require) {
 
     var React = require("react");
-
+    var Reflux = require("reflux");
+    var ActivityStore = require("stores/activities-store");
+    var ActivityActions = require("actions/activities-action");
+    var Seperator = require("components/Seperator/Seperator.jsx");
     var PictureFlow = React.createClass({
+        mixins:[Reflux.listenTo(ActivityStore,'onActivitiesStatusChange')],
         getInitialState: function () {
             return {
-                list:[
-                    {
-                        id:1,
-                        url:'http://static.panoramio.com/photos/original/63692230.jpg',
-                        title:'丽江洱海'
-                    },
-                    {
-                        id:2,
-                        url:'http://img1.imgtn.bdimg.com/it/u=356837486,2931730445&fm=21&gp=0.jpg',
-                        title:'云南大理'
-                    },
-                    {
-                        id:3,
-                        url:'http://static.panoramio.com/photos/large/47856922.jpg',
-                        title:'西藏服务点'
-                    },
-                    {
-                        id:4,
-                        url:'http://static.panoramio.com/photos/large/7444900.jpg',
-                        title:'汉白玉'
-                    }
-                ]
+                list:[]
             };
+        },
+        onActivitiesStatusChange:function(res){
+          console.log("activities  数据变化：",res);
+            this.setState({
+                list:res
+            });
         },
         componentWillMount: function () {
             //console&&console.log('component will mount');
         },
         componentDidMount: function () {
             //console&&console.log('component did mount');
+            ActivityActions.getActivities();
         },
         render: function () {
+            var i=0;
             return (<div className="PictureFlow">
+                <Seperator datatitle="活动图片"/>
             {this.state.list&&this.state.list.map(function(picture){
+                i++;
+               return <div className={i%5==1?"pic-li m-size":"pic-li"}>
+                   <img src={picture.picturePath}/>
+                   <div className="title-bg"/>
+                   <a href="javascript:void(0)" className="title">{picture.title}</a>
 
+                   <div className="description-bg"/>
+                   <a href="javascript:void(0)" className="description">{picture.description||'美丽的香格里拉, 迷人的梅里雪山，稻城亚丁欢迎您...'}</a>
+               </div>
             })}
             </div>)
         }
