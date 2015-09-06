@@ -1,0 +1,20 @@
+.empty-ctn {
+  box-sizing: border-box;
+  padding: 20px;
+  height: 120px;
+  text-align: center;
+}
+.music-item .icon {
+  width: 36px;
+  height: 36px;
+}
+.music-item .basic-info {
+  width: 60%;
+}
+.music-item .basic-info,
+.music-item .icon {
+  display: inline-block;
+}
+/*
+@require("css/loading.gif");
+*/

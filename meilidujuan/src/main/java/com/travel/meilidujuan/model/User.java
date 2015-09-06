@@ -12,7 +12,7 @@ public class User {
 	private String userName;
 	private String userPwd;
 	private String userNickname;
-	private int type;//0:普通用户  1:超级用户
+	private int type = 0;//0:普通用户  1:超级用户
 //	CREATE TABLE `tb_user` (
 //		  `id` int(10) NOT NULL auto_increment COMMENT '主键',
 //		  `user_name` varchar(50) default NULL COMMENT '用户名',
