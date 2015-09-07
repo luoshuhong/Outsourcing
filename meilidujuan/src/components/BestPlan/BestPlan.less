@@ -1,0 +1,68 @@
+.BestPlan{
+  .PlanItem{
+    width:260px;
+    float:left;
+    border:1px solid #ddd;
+    margin:20px;
+    padding:0px;
+    .img-ctn{
+      position:relative;
+      letter-spacing: 2px;
+      .price,.duration,.name{
+        position:absolute;
+        color:#fff;
+        height:30px;
+        line-height: 30px;
+        padding:2px;
+        display: block;
+      }
+      .price{
+        right:1px;
+        top:20px;
+        width:90px;
+        opacity: .8;
+        background-color:rgb(146,62,73);
+      }
+      .duration{
+        left:5px;
+        width:40px;
+        bottom:10px;
+        .sp{
+          font-size:30px;
+          font-weight: bold;
+        }
+      }
+      .name{
+        right:5px;
+        width:180px;
+        bottom:10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+    img{
+      width:256px;
+      height:180px;
+    }
+    .description,.leader{
+      text-align: left;
+      padding:10px;
+      font-size:12px;
+    }
+    .description{
+      height:60px;
+      overflow: hidden;
+    }
+    .leader{
+      width:40%;
+      display:inline-block;
+    }
+    .actions{
+      display:inline-block;
+      width:55%;
+      padding-right:5px;
+      text-align:right;
+    }
+  }
+}
