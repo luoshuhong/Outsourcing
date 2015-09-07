@@ -1,8 +1,8 @@
 <table cellpadding="0" cellspacing="0" width="650" align="center" style="font-size:14px; font-family:'Helvetic Neue', Helvetica, Arial; background-color:#fff;">
     <tr  height="80" style="background:#59bde5;">
         <td align="left" style="padding-left: 30px;">
-            <img src="http://ct2.yunxiao.com:8001/static/common/images/yunxiaologo.png" alt="云校logo" width="72" height="30" border="0"style="display: inline-block;"/>
-            <img src="http://ct2.yunxiao.com:8001/static/common/images/tobemyself.png" alt="云校logo" width="112" height="17" border="0" style="display:inline-block;padding-top:13px; padding-left:20px;"/>
+            <img src="http://aawooo.com/static/common/images/meilidujuan.png" alt="" width="72" height="30" border="0"style="display: inline-block;"/>
+            <img src="http://aawooo.com/static/common/images/tobemyself.png" alt="" width="112" height="17" border="0" style="display:inline-block;padding-top:13px; padding-left:20px;"/>
         </td>
     </tr>
     <tr height="60" align="left">
@@ -27,7 +27,7 @@
     </tr>
     <tr>
         <td style="font-size:12px; font-family:'Helvetic Neue', Helvetica, Arial;padding:40px 60px 30px 30px;color:#6e7279;">
-            如果您在使用中遇到疑问或对我们有任何建议，欢迎反馈至: <a href="mailto:support@iyunxiao.com" style="font-size:12px; font-family:'Helvetic Neue', Helvetica, Arial;color:#59bde5;word-break: break-all;">support@iyunxiao.com</a>
+            如果您在使用中遇到疑问或对我们有任何建议，欢迎反馈至: <a href="mailto:support@meilidujuan.com" style="font-size:12px; font-family:'Helvetic Neue', Helvetica, Arial;color:#59bde5;word-break: break-all;">support@meilidujuan.com</a>
         </td>
     </tr>
 </table>
