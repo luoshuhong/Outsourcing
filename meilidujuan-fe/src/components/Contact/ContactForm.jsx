@@ -1,7 +1,12 @@
 /**
  * Created by liunickluck on 15/7/9.
  */
-    define(['react',"actions/contact-action","stores/contact-store",'jquery'],function(React,ContactAction,ContactStore,$){
+    define(function(require){
+        var React = require('react');
+        var ContactAction = require("actions/contact-action");
+        var ContactStore = require("stores/contact-store");
+        var $ =require('jquery');
+        var mailTpl=require("templates/MailTpl");
         var ContactForm = React.createClass({
             getInitialState:function(){
                 return ContactStore.getDefault();
@@ -15,12 +20,17 @@
             componentWillUnmount: function() {
                 ContactStore.removeChangeListener(this.onChange);
             },
-            onClickSaveHandler:function(){
+            onClickSubmitHandler:function(){
                 var form = $(this.getDOMNode());
                 var name = form.find("input[name=name]").val();
                 var address = form.find("input[name=address]").val();
                 var description = form.find("textarea[name=description]").val();
-                ContactAction.createContact({name:name,address:address,description:description});
+                var email = form.find("input[name=email]").val();
+                var qq = form.find("input[name=qq]").val();
+                var phone = form.find("input[name=phone]").val();
+                var content =mailTpl({name:name,address:address,qq:qq,phone:phone});
+                console.log(email);
+               ContactAction.sendEmail({from:email,subject:'来自梅里杜鹃',contentType:"text/html",content:content,to:'梅里杜鹃'});
             },
             render:function(){
                 return(<form className="form-horizontal ContactForm">
@@ -41,6 +51,12 @@
                         <label htmlFor="ticketFormQQ"  className="col-sm-2">QQ：</label>
                         <div className="col-sm-10">
                             <input name="qq" id="ticketFormQQ" className="form-control" type="text" placeholder="您的qq"/>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="ticketFormEmail"  className="col-sm-2">Email：</label>
+                        <div className="col-sm-10">
+                            <input name="email" id="ticketFormEmail" className="form-control" type="text" placeholder="您的邮箱"/>
                         </div>
                     </div>
                     <div className="form-group">

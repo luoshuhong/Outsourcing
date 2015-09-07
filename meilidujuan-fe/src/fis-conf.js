@@ -81,9 +81,16 @@ fis.match('**.hbs', {
     id:'$0.hbs',
     isJsLike:true
 });
+
 fis.match('{actions,collections,dispatcher,stores,models,routes,templates}/*.*', {
     isMod:true,
     release: '/static/$0'
+});
+fis.match('**.tpl', {
+    isMod: false,
+    parser: fis.plugin('utc'),
+    rExt:'.js',
+    isJsLike:true
 });
 /*
 fis.media("prod").match('*',{

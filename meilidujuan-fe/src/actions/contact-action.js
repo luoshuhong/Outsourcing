@@ -5,7 +5,8 @@ define(['reflux'],function(Reflux){
     var ContactActions = Reflux.createActions([
         "createContact",
         "getContacts",
-        "deleteContact"
+        "deleteContact",
+        "sendEmail"
     ]);
     return ContactActions;
 });
