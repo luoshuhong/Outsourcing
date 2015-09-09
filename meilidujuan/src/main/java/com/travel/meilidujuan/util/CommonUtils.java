@@ -31,6 +31,24 @@ public class CommonUtils {
 		return str;
 	}
 	
+	/**
+	 * 拼接sql 语句
+	 * @param str
+	 * @param key
+	 * @param value
+	 * @param symbol
+	 * @return
+	 */
+	public static String addConnectorsLike(String str, String key, Object value, String symbol) {
+		if (6 < str.trim().length()) {
+			str = str + " " + symbol;
+		}
+		
+		str = str + " " + key + " like '"+ value + "'";
+		
+		return str;
+	}
+	
 	public static void main(String[] args) {
 		String sql = "set name=xx";
 		System.out.println(addConnectors(sql, "id", new Integer(12), ","));

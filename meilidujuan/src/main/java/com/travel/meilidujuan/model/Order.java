@@ -22,7 +22,7 @@ public class Order {
 	private String orderName; //订单名称
 	private String userName;  //用户名称
 	private int    userSex;   //用户性别
-	private int    usePhone;  //用户电话
+	private int    userPhone;  //用户电话
 	private int    userQQ;	  //用户QQ
 	private String userCity;  //城市
 	
@@ -50,11 +50,11 @@ public class Order {
 	public void setUserSex(int userSex) {
 		this.userSex = userSex;
 	}
-	public int getUsePhone() {
-		return usePhone;
+	public int getUserPhone() {
+		return userPhone;
 	}
-	public void setUsePhone(int usePhone) {
-		this.usePhone = usePhone;
+	public void setUserPhone(int userPhone) {
+		this.userPhone = userPhone;
 	}
 	public int getUserQQ() {
 		return userQQ;

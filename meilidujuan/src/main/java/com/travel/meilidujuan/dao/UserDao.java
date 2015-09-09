@@ -37,7 +37,7 @@ public class UserDao extends JdbcDaoSupport implements DaoInter<User> {
 	
 	@Override
 	public List<Map<String,Object>> query(User t) {
-		String where = " set "; 
+		String where = " where "; 
 		//用户名
 		if (!StringUtils.isEmpty(t.getUserName())) {
 			where = CommonUtils.addConnectors(where, "user_name", t.getUserName(), "and");
@@ -49,6 +49,10 @@ public class UserDao extends JdbcDaoSupport implements DaoInter<User> {
 		//昵称
 		if (!StringUtils.isEmpty(t.getUserNickname())) {
 			where = CommonUtils.addConnectors(where, "user_nickname", t.getUserNickname(), "and");
+		}
+		
+		if (6 > where.trim().length()) {
+			where = "";
 		}
 		
 		String selectSql = "select id as id, user_name as userName,"

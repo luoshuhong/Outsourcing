@@ -35,13 +35,19 @@ public class AnswerQuestionDao extends JdbcDaoSupport implements DaoInter<Answer
 	@Override
 	public List<Map<String,Object>> query(AnswerQuestion t) {
 		String where = " where "; 
+		if (0 < t.getId()) {
+			where = CommonUtils.addConnectors(where, "id", new Integer(t.getId()), "and");
+		}
 		if (!StringUtils.isEmpty(t.getAnswer())) {
 			where = CommonUtils.addConnectors(where, "answer", t.getAnswer(), "and");
 		}
 		if (!StringUtils.isEmpty(t.getQuestion())) {
 			where = CommonUtils.addConnectors(where, "question", t.getQuestion(), "and");
 		}
-		
+		if (6 > where.trim().length()) {
+			where = "";
+		}
+				
 		String selectSql = "select id as id, answer as answer,"
 				+ "question as question  from tb_user " + where + " order by id desc";
 		return this.getJdbcTemplate().queryForList(selectSql);
@@ -60,7 +66,4 @@ public class AnswerQuestionDao extends JdbcDaoSupport implements DaoInter<Answer
 		String updateSql = "update tb_answer_question " + setStr + " where id = ?";
 		return 1 == this.getJdbcTemplate().update(updateSql, new Object[]{t.getId()});
 	}
-	
-	
-	
 }
