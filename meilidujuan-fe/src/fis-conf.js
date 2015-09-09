@@ -37,6 +37,7 @@ fis.match('{/bower_components/**/*.js,/common/lib/**/*.js,/common/lib/*.js,/comm
     release:'/static/vendor/vendor.js',
     packTo:'/static/vendor/vendor.js'
 });
+
 fis.match('/bower_components/requirejs/require.js',{
     isMod:false,
     release:'/static/vendor/require.js',
@@ -80,9 +81,16 @@ fis.match('**.hbs', {
     id:'$0.hbs',
     isJsLike:true
 });
+
 fis.match('{actions,collections,dispatcher,stores,models,routes,templates}/*.*', {
     isMod:true,
     release: '/static/$0'
+});
+fis.match('**.tpl', {
+    isMod: false,
+    parser: fis.plugin('utc'),
+    rExt:'.js',
+    isJsLike:true
 });
 /*
 fis.media("prod").match('*',{

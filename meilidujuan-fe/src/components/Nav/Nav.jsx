@@ -27,7 +27,7 @@ define(function (require) {
                     id:3
                 },{
                     label:'租车服务',
-                    path:'/#/rentcars',
+                    path:'/#/rentcar',
                     id:4
                 },{
                     label:'领队风采',

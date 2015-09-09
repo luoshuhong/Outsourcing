@@ -5,25 +5,7 @@
 define(function (require) {
 
     var React = require("react");
-    var PlanItem = React.createClass({
-        render:function(){
-            return(<div className="PlanItem">
-                <div className="img-ctn">
-                    <img src={this.props.img}/>
-                    <span className="price">{this.props.price}</span>
-                    <span className="duration"><span className="sp">{this.props.duration}</span>天</span>
-                    <span className="name">{this.props.name}</span>
-                </div>
-                <div className="info-box">
-                    <p className="description">{this.props.description}</p>
-                    <div className="leader"><i className="glyphicon glyphicon-user"></i>&nbsp;&nbsp;<a href="javascript:void(0)">{this.props.leader}</a></div>
-                    <div className="actions">
-                        <a className="btn btn-success btn-xs" href="javascript:void(0)">报名参加</a>
-                    </div>
-                </div>
-            </div>)
-        }
-    });
+    var PlanItem = require("./PlanItem.jsx");
     var BestPlan = React.createClass({
         getInitialState: function () {
             return {
@@ -31,6 +13,7 @@ define(function (require) {
                     var list=[];
                     for(var i=0;i<20;i++){
                         list.push({
+                            id:i,
                             img:'http://www.djyaa.com/uploads/2013/02/1360115501-oN20rb.jpg',
                             name:'梅里雪山5天3页深度游',
                             price:'5888元',
