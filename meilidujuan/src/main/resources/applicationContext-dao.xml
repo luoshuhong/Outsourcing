@@ -24,5 +24,26 @@
     <bean id="userDao" class="com.travel.meilidujuan.dao.UserDao">  
     	<property name="dataSource" ref="tradeDataSource"></property>  
     </bean>
+     <bean id="answerQuestionDao" class="com.travel.meilidujuan.dao.AnswerQuestionDao">  
+    	<property name="dataSource" ref="tradeDataSource"></property>  
+    </bean>
+     <bean id="articleDao" class="com.travel.meilidujuan.dao.ArticleDao">  
+    	<property name="dataSource" ref="tradeDataSource"></property>  
+    </bean>
+     <bean id="imageDao" class="com.travel.meilidujuan.dao.ImageDao">  
+    	<property name="dataSource" ref="tradeDataSource"></property>  
+    </bean>
+     <bean id="orderDao" class="com.travel.meilidujuan.dao.OrderDao">  
+    	<property name="dataSource" ref="tradeDataSource"></property>  
+    </bean>
+     <bean id="rentCarDao" class="com.travel.meilidujuan.dao.RentCarDao">  
+    	<property name="dataSource" ref="tradeDataSource"></property>  
+    </bean>
+     <bean id="routeDao" class="com.travel.meilidujuan.dao.RouteDao">  
+    	<property name="dataSource" ref="tradeDataSource"></property>  
+    </bean>
+    <bean id="tourGuideDao" class="com.travel.meilidujuan.dao.TourGuideDao">  
+    	<property name="dataSource" ref="tradeDataSource"></property>  
+    </bean>
 	
 </beans>

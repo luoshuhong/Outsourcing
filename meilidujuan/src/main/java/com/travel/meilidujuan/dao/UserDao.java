@@ -17,12 +17,6 @@ import com.travel.meilidujuan.util.CommonUtils;
  *
  */
 public class UserDao extends JdbcDaoSupport implements DaoInter<User> {
-//	  `id` int(10) NOT NULL auto_increment COMMENT '主键',
-//	  `user_name` varchar(50) default NULL COMMENT '用户名',
-//	  `user_pwd` varchar(50) character set utf8 default NULL COMMENT '密码',
-//	  `user_nickname` varchar(50) character set utf8 NOT NULL COMMENT '昵称',
-//	  `type` int(2) default '0' COMMENT '用户类型 0：普通用户 1：超级用户',
-	
 	public boolean add(User user) {
 		String insertSql = "insert into tb_user(user_name,user_pwd,user_nickname,type) values(?,?,?,?)";
 		return 1 == this.getJdbcTemplate().update(insertSql, 
