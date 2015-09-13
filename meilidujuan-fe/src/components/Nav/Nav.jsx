@@ -15,7 +15,7 @@ define(function (require) {
             return {
                 list:[{
                     label:'首页',
-                    path:'/',
+                    path:'/#/',
                     id:1
                 },{
                     label:'精品线路',

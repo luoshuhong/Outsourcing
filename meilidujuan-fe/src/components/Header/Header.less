@@ -1,10 +1,42 @@
 .header{
-  height:140px;
+  height:auto;
   width:100%;
-  background: url("http://www.meilidujuan.com/wp-content/uploads/2015/08/the-moon-1280x240.png") no-repeat;
   position:relative;
+  .top_banner_bg{
+    position: absolute;
+    top:0px;
+  }
+  .pic{
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
+    background: no-repeat 0 0;
+    img{
+      border-radius: 2px;
+    }
+  }
+  .top_banner_bg{
+    width:100%;
+    z-index: -1;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+  }
+  .header-nav-ctn,.header-nav-bg{
+    width: 960px;
+    height:40px;
+    position: absolute;
+    bottom: 2px;
+    left: 98px;
+  }
   .header-nav-ctn{
-    position:absolute;
-    bottom:2px;
+    z-index:2;
+  }
+  .header-nav-bg{
+    width:1024px;
+    background:#000;
+    opacity: .3;
+    z-index: 1;
   }
 }

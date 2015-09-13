@@ -17,7 +17,7 @@
     </tr>
     <tr>
         <td style="font-size:14px; font-family:'Helvetic Neue', Helvetica, Arial;padding:30px 60px 30px 30px;">
-                电话：<%=phone%>
+                电话：<%=phone%>,email:<%=email%>
         </td>
     </tr>
     <tr>

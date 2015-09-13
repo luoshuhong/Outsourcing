@@ -31,7 +31,7 @@ define(function (require) {
         },
         render: function () {
             var i=0;
-            return (<div className="PictureFlow">
+            return (<div className="PictureFlow activities">
                 <Seperator datatitle="活动图片"/>
             {this.state.list&&this.state.list.map(function(picture){
                 i++;

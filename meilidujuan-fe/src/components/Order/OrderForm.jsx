@@ -7,6 +7,9 @@ define(function (require) {
     var React = require("react");
     var $ = require("jquery");
     var utils = require("utils");
+    var ContactAction = require("actions/contact-action");
+    var mailTpl=require("templates/MailTpl");
+
     var OrderForm = React.createClass({
         getInitialState: function () {
             return {};
@@ -20,7 +23,9 @@ define(function (require) {
         onClickSubmitHandler:function(){
             var form = $(this.getDOMNode()).find(".ticket-form");
             var formData = utils.serializerToJson(form.serialize());
-            console.log("提交订单信息",formData);
+            var content =mailTpl(formData);
+            ContactAction.sendEmail({from:"626501614@qq.com",subject:'来自梅里杜鹃',contentType:"text/html",content:content,to:'梅里杜鹃'});
+            alert("感谢您与我们联系，我们将会有专门人员与您取得联系，祝您愉快");
         },
         render: function () {
             return (<div className="OrderForm">
@@ -52,10 +57,18 @@ define(function (require) {
                             <input name="qq" id="ticketFormQQ" className="form-control" type="text" placeholder="您的qq"/>
                         </div>
                     </div>
+
+                    <div className="form-group">
+                        <label htmlFor="ticketFormEmail"  className="col-sm-2">Email：</label>
+                        <div className="col-sm-10">
+                            <input name="email" id="ticketFormEmail" className="form-control" type="text" placeholder="您的邮箱"/>
+                        </div>
+                    </div>
+
                     <div className="form-group">
                         <label htmlFor="ticketFormCity"  className="col-sm-2">城市：</label>
                         <div className="col-sm-10">
-                             <input name="city" id="ticketFormCity"  className="form-control" type="text" placeholder="您所在城市"/>
+                             <input name="address" id="ticketFormCity"  className="form-control" type="text" placeholder="您所在城市"/>
                         </div>
                     </div>
                     <div className="form-group">

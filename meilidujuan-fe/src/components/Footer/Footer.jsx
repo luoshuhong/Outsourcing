@@ -45,9 +45,11 @@ define(['react', 'jquery', 'collections/FooterCollection', 'eventMgr','react-rou
             var that = this;
             return (
                 <div id="footer-ctn" className="footer">
-                    <div className="logo">
-                        <img src={this.state.logoUrl}/>
-                    </div>
+                {/*
+                 <div className="logo">
+                 <img src={this.state.logoUrl}/>
+                 </div>
+                */}
                     <div className="contactInfo">
                         <h5>{this.state.companyName}</h5>
                         <div className="item">
@@ -59,9 +61,9 @@ define(['react', 'jquery', 'collections/FooterCollection', 'eventMgr','react-rou
                         <div className="item">
                             <label>电话：</label>{this.state.phone}
                         </div>
-                    </div>
-                    <div className="qrcode">
-                        <img src={this.state.qrcodeUrl}/>
+                        <div className="qrcode">
+                            <img src={this.state.qrcodeUrl}/>
+                        </div>
                     </div>
                 </div>);
         }

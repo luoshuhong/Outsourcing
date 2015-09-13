@@ -28,9 +28,9 @@
                 var email = form.find("input[name=email]").val();
                 var qq = form.find("input[name=qq]").val();
                 var phone = form.find("input[name=phone]").val();
-                var content =mailTpl({name:name,address:address,qq:qq,phone:phone});
-                console.log(email);
-               ContactAction.sendEmail({from:email,subject:'来自梅里杜鹃',contentType:"text/html",content:content,to:'梅里杜鹃'});
+                var content =mailTpl({name:name,address:address,qq:qq,phone:phone,email:email});
+               ContactAction.sendEmail({from:"626501614@qq.com",subject:'来自梅里杜鹃',contentType:"text/html",content:content,to:'梅里杜鹃'});
+                alert("感谢您与我们联系，我们将会有专门人员与您取得联系，祝您愉快");
             },
             render:function(){
                 return(<form className="form-horizontal ContactForm">

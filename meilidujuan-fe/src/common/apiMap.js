@@ -2,7 +2,7 @@
  * Created by liunickluck on 15/7/16.
  */
 define([],function(){
-    var serverDomain = "http://server.aawooo.com:8080";
+    var serverDomain = "http://ssh.com:8080";
     var map={
             "addArticleAction":serverDomain+"/articleAction!addArticle.action",
             "checkLoginAction":serverDomain+"/userAction!checkLogin.action",
@@ -23,7 +23,9 @@ define([],function(){
             "getCheckCode":serverDomain+"/userAction!getCheckCodeImage.action",
             "checkCodeAction":serverDomain+"/userAction!verifyVCodeAction.action",
             "getWebStream":serverDomain+"/streamAction!getWebStream.action",
-            "createNote":serverDomain+"/noteAction!addNote.action"
+            "createNote":serverDomain+"/noteAction!addNote.action",
+            "plan":serverDomain+"/plan",
+            "rentCar":serverDomain+"/rentCar"
         };
     return map;
 });
