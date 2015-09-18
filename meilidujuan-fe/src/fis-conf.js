@@ -1,7 +1,7 @@
 /**
  * Created by liunickluck on 15/8/10.
  */
-fis.set('project.files', ['*.html','*.js',"*.png","*.css",'*.jsx'])
+fis.set('project.files',['*.html','*.js',"*.png","*.css",'*.jsx'])
 var requireConfig = require("./require.json");
 fis.hook('module', fis.util.merge({
     mode: 'auto',
@@ -90,17 +90,15 @@ fis.match('**.tpl', {
     isMod: false,
     parser: fis.plugin('utc'),
     rExt:'.js',
-    isJsLike:true
+    isJsLike:true,
+    release:false
 });
-/*
-fis.media("prod").match('*',{
-    deploy :fis.plugin("ftp",{
-        remoteDir : '/just_it/react',
-        connect : {
-            host : '192.161.63.22',
-            port : '21',
-            user : 'just-it.top',
-            password : 'liujintao'
-        }
-    })
-});*/
+fis.media("prod").match("*",{
+    deploy:[
+            fis.plugin("replace",{
+                from:"http://ssh.com:8080",
+                to:"http://server.meilidujuan.com:8080"
+            }),
+        fis.plugin('local-deliver')
+    ]
+})
