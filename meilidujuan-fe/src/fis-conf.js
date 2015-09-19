@@ -72,6 +72,18 @@ fis.match('**.jsx', {
     id:'$0.jsx',
     isJsLike:true
 });
+
+fis.match('admin/**.jsx', {
+    isMod: true,
+    parser: fis.plugin('react'),
+    release: '/static/admin.components.jsx.js',
+    packTo:'/static/admin.components.jsx.js',
+    optimizer: fis.plugin('uglify-js'),
+    rExt:'.js',
+    id:'$0.jsx',
+    isJsLike:true
+});
+
 fis.match('**.hbs', {
     isMod: true,
     parser: fis.plugin('handlebars'),
