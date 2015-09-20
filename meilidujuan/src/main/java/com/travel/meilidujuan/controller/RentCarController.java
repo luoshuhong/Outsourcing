@@ -1,5 +1,6 @@
 package com.travel.meilidujuan.controller;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.travel.meilidujuan.model.RentCar;
 import com.travel.meilidujuan.model.TourGuide;
 import com.travel.meilidujuan.service.RentCarService;
@@ -83,7 +85,7 @@ public class RentCarController {
 			RentCar rentCar = this.wrap(request);
 			List<Map<String, Object>> list = this.rentCarService.query(rentCar);
 			if (null != list) {
-				return RequestUtils.successReturn(JSONArray.toJSONString(list).toString());
+				return RequestUtils.successReturn(JSONArray.toJSONString(list));
 			} else {
 				return RequestUtils.successReturn("");
 			}
@@ -98,14 +100,16 @@ public class RentCarController {
 	 * 封装请求model
 	 * @param request
 	 * @return
+	 * @throws IOException 
 	 */
-	private RentCar wrap(HttpServletRequest request) {
+	private RentCar wrap(HttpServletRequest request) throws IOException {
+		JSONObject requestJob = RequestUtils.getJsonRequest(request);
 		RentCar rentCar = new RentCar();
-		rentCar.setImgUrl(RequestUtils.getValue(request, "imgUrl", ""));
-		rentCar.setDes(RequestUtils.getValue(request, "des", ""));
+		rentCar.setImgUrl(RequestUtils.getValue(requestJob, "imgUrl", ""));
+		rentCar.setDes(RequestUtils.getValue(requestJob, "des", ""));
 		rentCar.setAddDate(new Date());
-		rentCar.setCapacity(Integer.valueOf(RequestUtils.getValue(request, "capacity", "0")));
-		rentCar.setPrice(Integer.valueOf(RequestUtils.getValue(request, "price", "0")));
+		rentCar.setCapacity(Integer.valueOf(RequestUtils.getValue(requestJob, "capacity", "0")));
+		rentCar.setPrice(Integer.valueOf(RequestUtils.getValue(requestJob, "price", "0")));
 		return rentCar;
 	}
 	

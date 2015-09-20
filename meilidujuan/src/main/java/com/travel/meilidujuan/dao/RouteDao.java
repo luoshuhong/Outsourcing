@@ -16,16 +16,10 @@ import com.travel.meilidujuan.util.CommonUtils;
  * 2015年9月6日
  */
 public class RouteDao extends JdbcDaoSupport implements DaoInter<Route> {
-//	CREATE TABLE `tb_route` (
-//	  `id` int(11) NOT NULL auto_increment,
-//	  `img_url` varchar(512) default NULL COMMENT '图片地址',
-//	  `des` varchar(255) default NULL COMMENT '描述',
-//	  `days` int(3) default '1' COMMENT '多少天',
-//	  `price` int(5) default '0' COMMENT '跟团金额',
 	@Override
 	public boolean add(Route t) {
 		String insertSql = "insert into tb_route(img_url,des,price,days) "
-				+ "values(?,?,?,?,?)";
+				+ "values(?,?,?,?)";
 		return 1 == this.getJdbcTemplate().update(insertSql, 
 				new Object[]{t.getImgUrl(),t.getDes(),t.getPrice(),t.getDays()});
 	}

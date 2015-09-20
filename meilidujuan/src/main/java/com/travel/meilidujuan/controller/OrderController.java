@@ -1,5 +1,6 @@
 package com.travel.meilidujuan.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.travel.meilidujuan.model.Order;
 import com.travel.meilidujuan.service.OrderService;
 import com.travel.meilidujuan.util.RequestUtils;
@@ -81,7 +83,7 @@ public class OrderController {
 			Order order = this.wrap(request);
 			List<Map<String, Object>> list = this.orderService.query(order);
 			if (null != list) {
-				return RequestUtils.successReturn(JSONArray.toJSONString(list).toString());
+				return RequestUtils.successReturn(JSONArray.toJSONString(list));
 			} else {
 				return RequestUtils.successReturn("");
 			}
@@ -96,15 +98,17 @@ public class OrderController {
 	 * 封装请求model
 	 * @param request
 	 * @return
+	 * @throws IOException 
 	 */
-	private Order wrap(HttpServletRequest request) {
+	private Order wrap(HttpServletRequest request) throws IOException {
+		JSONObject requestJob = RequestUtils.getJsonRequest(request);
 		Order order = new Order();
-		order.setOrderName(RequestUtils.getValue(request, "orderName", ""));
-		order.setUserName(RequestUtils.getValue(request, "userName", ""));
-		order.setUserSex(Integer.valueOf(RequestUtils.getValue(request, "userSex", "0")));
-		order.setUserPhone(Integer.valueOf(RequestUtils.getValue(request, "userPhone", "0")));
-		order.setUserQQ(Integer.valueOf(RequestUtils.getValue(request, "userQQ", "0")));
-		order.setUserCity(RequestUtils.getValue(request, "userCity", "0"));
+		order.setOrderName(RequestUtils.getValue(requestJob, "orderName", ""));
+		order.setUserName(RequestUtils.getValue(requestJob, "userName", ""));
+		order.setUserSex(Integer.valueOf(RequestUtils.getValue(requestJob, "userSex", "0")));
+		order.setUserPhone(Integer.valueOf(RequestUtils.getValue(requestJob, "userPhone", "0")));
+		order.setUserQQ(Integer.valueOf(RequestUtils.getValue(requestJob, "userQQ", "0")));
+		order.setUserCity(RequestUtils.getValue(requestJob, "userCity", "0"));
 		return order;
 	}
 }

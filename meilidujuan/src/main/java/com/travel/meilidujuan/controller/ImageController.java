@@ -1,5 +1,6 @@
 package com.travel.meilidujuan.controller;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.travel.meilidujuan.model.Image;
 import com.travel.meilidujuan.service.ImageService;
 import com.travel.meilidujuan.util.RequestUtils;
@@ -81,7 +83,7 @@ public class ImageController {
 			Image image = this.wrap(request);
 			List<Map<String, Object>> list = this.imageService.query(image);
 			if (null != list) {
-				return RequestUtils.successReturn(JSONArray.toJSONString(list).toString());
+				return RequestUtils.successReturn(JSONArray.toJSONString(list));
 			} else {
 				return RequestUtils.successReturn("");
 			}
@@ -96,14 +98,16 @@ public class ImageController {
 	 * 封装请求model
 	 * @param request
 	 * @return
+	 * @throws IOException 
 	 */
-	private Image wrap(HttpServletRequest request) {
+	private Image wrap(HttpServletRequest request) throws IOException {
+		JSONObject requestJob = RequestUtils.getJsonRequest(request);
 		Image image = new Image();
-		image.setUrl(RequestUtils.getValue(request, "imgUrl", ""));
-		image.setDes(RequestUtils.getValue(request, "des", ""));
+		image.setUrl(RequestUtils.getValue(requestJob, "imgUrl", ""));
+		image.setDes(RequestUtils.getValue(requestJob, "des", ""));
 		image.setAddDate(new Date());
-		image.setType(Integer.valueOf(RequestUtils.getValue(request, "type", "0")));
-		image.setGroupId(Integer.valueOf(RequestUtils.getValue(request, "groupId", "0")));
+		image.setType(Integer.valueOf(RequestUtils.getValue(requestJob, "type", "0")));
+		image.setGroupId(Integer.valueOf(RequestUtils.getValue(requestJob, "groupId", "0")));
 		return image;
 	}
 }

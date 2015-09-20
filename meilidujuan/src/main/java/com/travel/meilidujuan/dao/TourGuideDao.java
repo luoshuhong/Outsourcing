@@ -25,7 +25,7 @@ public class TourGuideDao extends JdbcDaoSupport implements DaoInter<TourGuide> 
 	@Override
 	public boolean add(TourGuide t) {
 		String insertSql = "insert into tb_tour_guide(img_url,introduction,price,work_years) "
-				+ "values(?,?,?,?,?)";
+				+ "values(?,?,?,?)";
 		return 1 == this.getJdbcTemplate().update(insertSql, 
 				new Object[]{t.getImgUrl(), t.getIntroduction(), t.getPrice(), t.getWorkYears()});
 	}
@@ -67,7 +67,7 @@ public class TourGuideDao extends JdbcDaoSupport implements DaoInter<TourGuide> 
 		if (6 > where.trim().length()) {
 			where = "";
 		}
-		String selectSql = "select id as id, img_url as imgUrl, introduction as introduction"
+		String selectSql = "select id as id, img_url as imgUrl, introduction as introduction,"
 				+ "price as price, work_years as workYears from tb_tour_guide " + where + " order by id desc";
 		return this.getJdbcTemplate().queryForList(selectSql);
 	}

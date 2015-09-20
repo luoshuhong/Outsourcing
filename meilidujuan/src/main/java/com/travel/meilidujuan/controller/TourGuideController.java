@@ -1,5 +1,6 @@
 	package com.travel.meilidujuan.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.travel.meilidujuan.model.TourGuide;
 import com.travel.meilidujuan.service.TourGuideService;
 import com.travel.meilidujuan.util.RequestUtils;
@@ -81,7 +83,7 @@ public class TourGuideController {
 			TourGuide tourGuide = this.wrap(request);
 			List<Map<String, Object>> list = this.tourGuideService.query(tourGuide);
 			if (null != list) {
-				return RequestUtils.successReturn(JSONArray.toJSONString(list).toString());
+				return RequestUtils.successReturn(JSONArray.toJSONString(list));
 			} else {
 				return RequestUtils.successReturn("");
 			}
@@ -96,13 +98,15 @@ public class TourGuideController {
 	 * 封装请求model
 	 * @param request
 	 * @return
+	 * @throws IOException 
 	 */
-	private TourGuide wrap(HttpServletRequest request) {
+	private TourGuide wrap(HttpServletRequest request) throws IOException {
+		JSONObject requestJob = RequestUtils.getJsonRequest(request);
 		TourGuide tourGuide = new TourGuide();
-		tourGuide.setImgUrl(RequestUtils.getValue(request, "imgUrl", ""));
-		tourGuide.setIntroduction(RequestUtils.getValue(request, "introduction", ""));
-		tourGuide.setWorkYears(RequestUtils.getValue(request, "workYears", ""));
-		tourGuide.setPrice(Integer.valueOf(RequestUtils.getValue(request, "price", "0")));
+		tourGuide.setImgUrl(RequestUtils.getValue(requestJob, "imgUrl", ""));
+		tourGuide.setIntroduction(RequestUtils.getValue(requestJob, "introduction", ""));
+		tourGuide.setWorkYears(RequestUtils.getValue(requestJob, "workYears", ""));
+		tourGuide.setPrice(Integer.valueOf(RequestUtils.getValue(requestJob, "price", "0")));
 		return tourGuide;
 	}
 	

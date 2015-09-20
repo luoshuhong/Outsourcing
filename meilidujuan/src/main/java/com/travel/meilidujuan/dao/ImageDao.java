@@ -44,7 +44,7 @@ public class ImageDao extends JdbcDaoSupport implements DaoInter<Image>{
 			where = "";
 		}
 		
-		String selectSql = "select id as id, url as url, des as des"
+		String selectSql = "select id as id, url as url, des as des,"
 				+ "add_date as addDate, type as type, group_id as groupId from tb_image " + where + " order by id desc";
 		return this.getJdbcTemplate().queryForList(selectSql);
 	}

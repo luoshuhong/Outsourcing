@@ -52,7 +52,7 @@ public class RentCarDao extends JdbcDaoSupport implements DaoInter<RentCar> {
 		if (6 > where.trim().length()) {
 			where = "";
 		}
-		String selectSql = "select id as id, img_url as imgUrl, des as des"
+		String selectSql = "select id as id, img_url as imgUrl, des as des,"
 				+ "price as price, capacity as capacity, add_date as addDate from tb_rent_car " + where + " order by id desc";
 		return this.getJdbcTemplate().queryForList(selectSql);
 	}

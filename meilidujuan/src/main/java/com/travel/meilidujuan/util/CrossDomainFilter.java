@@ -32,7 +32,10 @@ public class CrossDomainFilter implements Filter {
         httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
         httpResponse.setHeader("Access-Control-Allow-Headers", "Origin,Token,X-Requested-With, Content-Type, Accept");
         httpResponse.setHeader("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,PATCH,OPTIONS");
-
+//        httpResponse.setHeader("Content-Type", "application/json;charset=utf-8");
+//        httpResponse.setHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+        request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
         chain.doFilter(request, httpResponse);
     }
 

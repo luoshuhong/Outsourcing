@@ -1,5 +1,6 @@
 package com.travel.meilidujuan.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.travel.meilidujuan.model.Route;
 import com.travel.meilidujuan.service.RouteService;
 import com.travel.meilidujuan.util.RequestUtils;
@@ -81,7 +83,7 @@ public class RouteController {
 			Route route = this.wrap(request);
 			List<Map<String, Object>> list = this.routeService.query(route);
 			if (null != list) {
-				return RequestUtils.successReturn(JSONArray.toJSONString(list).toString());
+				return RequestUtils.successReturn(JSONArray.toJSONString(list));
 			} else {
 				return RequestUtils.successReturn("");
 			}
@@ -97,13 +99,15 @@ public class RouteController {
 	 * 封装请求model
 	 * @param request
 	 * @return
+	 * @throws IOException 
 	 */
-	private Route wrap(HttpServletRequest request) {
+	private Route wrap(HttpServletRequest request) throws IOException {
+		JSONObject requestJob = RequestUtils.getJsonRequest(request);
 		Route route = new Route();
-		route.setImgUrl(RequestUtils.getValue(request, "imgUrl", ""));
-		route.setDes(RequestUtils.getValue(request, "des", ""));
-		route.setDays(Integer.valueOf(RequestUtils.getValue(request, "days", "0")));
-		route.setPrice(Integer.valueOf(RequestUtils.getValue(request, "price", "0")));
+		route.setImgUrl(RequestUtils.getValue(requestJob, "imgUrl", ""));
+		route.setDes(RequestUtils.getValue(requestJob, "des", ""));
+		route.setDays(Integer.valueOf(RequestUtils.getValue(requestJob, "days", "0")));
+		route.setPrice(Integer.valueOf(RequestUtils.getValue(requestJob, "price", "0")));
 		return route;
 	}
 }

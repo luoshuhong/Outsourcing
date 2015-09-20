@@ -49,7 +49,7 @@ public class ArticleDao extends JdbcDaoSupport implements DaoInter<Article> {
 			where = "";
 		}
 		
-		String selectSql = "select id as id, title as title, add_date as addDate"
+		String selectSql = "select id as id, title as title, add_date as addDate,"
 				+ "digest as digest, content as content, author as author  from tb_article " + where + " order by id desc";
 		return this.getJdbcTemplate().queryForList(selectSql);
 	}

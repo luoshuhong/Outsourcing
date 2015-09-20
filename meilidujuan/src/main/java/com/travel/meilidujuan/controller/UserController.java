@@ -1,5 +1,6 @@
 package com.travel.meilidujuan.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.travel.meilidujuan.model.User;
 import com.travel.meilidujuan.service.UserService;
 import com.travel.meilidujuan.util.RequestUtils;
@@ -83,7 +85,7 @@ public class UserController {
 			User user = this.wrap(request);
 			List<Map<String, Object>> list = this.userService.query(user);
 			if (null != list) {
-				return RequestUtils.successReturn(JSONArray.toJSONString(list).toString());
+				return RequestUtils.successReturn(JSONArray.toJSONString(list));
 			} else {
 				return RequestUtils.successReturn("");
 			}
@@ -118,13 +120,15 @@ public class UserController {
 	 * 封装请求model
 	 * @param request
 	 * @return
+	 * @throws IOException 
 	 */
-	private User wrap(HttpServletRequest request) {
+	private User wrap(HttpServletRequest request) throws IOException {
+		JSONObject requestJob = RequestUtils.getJsonRequest(request);
 		User user = new User();
-		user.setUserName(RequestUtils.getValue(request, "userName", ""));
-		user.setUserPwd(RequestUtils.getValue(request, "userPwd", ""));
-		user.setUserNickname(RequestUtils.getValue(request, "userNickname", ""));
-		user.setType(Integer.valueOf(RequestUtils.getValue(request, "type", "0")));
+		user.setUserName(RequestUtils.getValue(requestJob, "userName", ""));
+		user.setUserPwd(RequestUtils.getValue(requestJob, "userPwd", ""));
+		user.setUserNickname(RequestUtils.getValue(requestJob, "userNickname", ""));
+		user.setType(Integer.valueOf(RequestUtils.getValue(requestJob, "type", "0")));
 		return user;
 	}
 	

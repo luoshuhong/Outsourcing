@@ -24,7 +24,7 @@ public class OrderDao extends JdbcDaoSupport implements DaoInter<Order> {
 	@Override
 	public boolean add(Order t) {
 		String insertSql = "insert into tb_order(order_name,user_name,user_sex,user_phone,user_qq,user_city)"
-				+ "values(?,?,?,?,?)";
+				+ "values(?,?,?,?,?,?)";
 		return 1 == this.getJdbcTemplate().update(insertSql, 
 				new Object[]{t.getOrderName(),t.getUserName(),t.getUserSex(),t.getUserPhone(),t.getUserQQ(),t.getUserCity()});
 	}

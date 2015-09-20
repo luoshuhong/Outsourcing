@@ -1,5 +1,6 @@
 package com.travel.meilidujuan.controller;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.travel.meilidujuan.model.Article;
 import com.travel.meilidujuan.service.ArticleService;
 import com.travel.meilidujuan.util.RequestUtils;
@@ -82,7 +84,7 @@ public class ArticleController {
 			Article article = this.wrap(request);
 			List<Map<String, Object>> list = this.articleService.query(article);
 			if (null != list) {
-				return RequestUtils.successReturn(JSONArray.toJSONString(list).toString());
+				return RequestUtils.successReturn(JSONArray.toJSONString(list));
 			} else {
 				return RequestUtils.successReturn("");
 			}
@@ -97,13 +99,15 @@ public class ArticleController {
 	 * 封装请求model
 	 * @param request
 	 * @return
+	 * @throws IOException 
 	 */
-	private Article wrap(HttpServletRequest request) {
+	private Article wrap(HttpServletRequest request) throws IOException {
+		JSONObject requestJob = RequestUtils.getJsonRequest(request);
 		Article article = new Article();
-		article.setTitle(RequestUtils.getValue(request, "title", ""));
-		article.setDigest(RequestUtils.getValue(request, "digest", ""));
-		article.setContent(RequestUtils.getValue(request, "content", ""));
-		article.setAuhor(RequestUtils.getValue(request, "auhor", ""));
+		article.setTitle(RequestUtils.getValue(requestJob, "title", ""));
+		article.setDigest(RequestUtils.getValue(requestJob, "digest", ""));
+		article.setContent(RequestUtils.getValue(requestJob, "content", ""));
+		article.setAuhor(RequestUtils.getValue(requestJob, "auhor", ""));
 		article.setAddDate(new Date());
 		return article;
 	}
