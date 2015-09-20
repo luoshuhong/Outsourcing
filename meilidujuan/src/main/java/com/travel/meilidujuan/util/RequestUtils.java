@@ -18,7 +18,7 @@ public class RequestUtils {
 	
 	public static String getValue(HttpServletRequest request, String key, String defValue) {
 		String value = request.getParameter(key);
-		return null == value ? value : defValue;
+		return null == value ? defValue : value;
 	}
 	
 	/**
@@ -42,7 +42,7 @@ public class RequestUtils {
 	public static String failReturn(String errMsg) {
 		JSONObject job = new JSONObject();
 		job.put("status", "fail");
-		job.put("msg", "errMsg");
+		job.put("msg", errMsg);
 		return job.toJSONString();
 	}
 	

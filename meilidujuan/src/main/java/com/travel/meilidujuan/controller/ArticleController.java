@@ -35,6 +35,7 @@ public class ArticleController {
 				return RequestUtils.failReturn("fail");
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			return RequestUtils.failReturn(e.getMessage());
 		} finally {
 		}
@@ -51,6 +52,7 @@ public class ArticleController {
 				return RequestUtils.failReturn("fail");
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			return RequestUtils.failReturn(e.getMessage());
 		} finally {
 		}
@@ -67,6 +69,7 @@ public class ArticleController {
 				return RequestUtils.failReturn("fail");
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			return RequestUtils.failReturn(e.getMessage());
 		} finally {
 		}
@@ -84,6 +87,7 @@ public class ArticleController {
 				return RequestUtils.successReturn("");
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			return RequestUtils.failReturn(e.getMessage());
 		} finally {
 		}

@@ -68,7 +68,7 @@ public class RouteDao extends JdbcDaoSupport implements DaoInter<Route> {
 		if (6 > where.trim().length()) {
 			where = "";
 		}
-		String selectSql = "select id as id, img_url as imgUrl, des as des"
+		String selectSql = "select id as id, img_url as imgUrl, des as des,"
 				+ "price as price, days as days from tb_route " + where + " order by id desc";
 		return this.getJdbcTemplate().queryForList(selectSql);
 	}
