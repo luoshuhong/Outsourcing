@@ -108,6 +108,8 @@ public class RouteController {
 		route.setDes(RequestUtils.getValue(requestJob, "des", ""));
 		route.setDays(Integer.valueOf(RequestUtils.getValue(requestJob, "days", "0")));
 		route.setPrice(Integer.valueOf(RequestUtils.getValue(requestJob, "price", "0")));
+        route.setName(RequestUtils.getValue(requestJob,"name",""));
+        route.setLeader(RequestUtils.getValue(requestJob,"leader",""));
 		return route;
 	}
 }

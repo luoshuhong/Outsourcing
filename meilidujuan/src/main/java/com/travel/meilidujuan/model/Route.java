@@ -14,6 +14,8 @@ public class Route {
 //			  `des` varchar(255) default NULL COMMENT '描述',
 //			  `days` int(3) default '1' COMMENT '多少天',
 //			  `price` int(5) default '0' COMMENT '跟团金额',
+//            'name' varchar(100),
+//            'leader' varchar(50),
 //			  PRIMARY KEY  (`id`)
 //			) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 	private int id;
@@ -21,6 +23,9 @@ public class Route {
 	private String des;    //描述
 	private int    days;   //几天
 	private int    price;  //跟团金额
+
+    private String leader;
+    private String name;
 	public int getId() {
 		return id;
 	}
@@ -51,5 +56,19 @@ public class Route {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getLeader() {
+        return leader;
+    }
+
+    public void setLeader(String leader) {
+        this.leader = leader;
+    }
+
 }	

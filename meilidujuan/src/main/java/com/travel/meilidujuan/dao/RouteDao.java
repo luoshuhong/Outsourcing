@@ -39,7 +39,12 @@ public class RouteDao extends JdbcDaoSupport implements DaoInter<Route> {
 		if (0 != t.getDays()) {
 			setStr = CommonUtils.addConnectors(setStr, "days", Integer.valueOf(t.getDays()), ",");
 		}
-		
+        if (!StringUtils.isEmpty(t.getLeader())) {
+            setStr = CommonUtils.addConnectorsLike(setStr, "leader", "%" + t.getLeader(),",");
+        }
+        if (!StringUtils.isEmpty(t.getName())) {
+            setStr = CommonUtils.addConnectorsLike(setStr, "name", "%" + t.getName(),",");
+        }
 		String updateSql = "update tb_route " + setStr + " where id = ?";
 		return 1 == this.getJdbcTemplate().update(updateSql, new Object[]{t.getId()});
 	}
@@ -59,11 +64,17 @@ public class RouteDao extends JdbcDaoSupport implements DaoInter<Route> {
 		if (0 != t.getDays()) {
 			where = CommonUtils.addConnectors(where, "capacity", Integer.valueOf(t.getDays()), "and");
 		}
+        if (!StringUtils.isEmpty(t.getLeader())) {
+            where = CommonUtils.addConnectorsLike(where, "leader", "%" + t.getLeader().trim() + "%", "and");
+        }
+        if (!StringUtils.isEmpty(t.getName())) {
+            where = CommonUtils.addConnectorsLike(where, "name", "%" + t.getName().trim() + "%", "and");
+        }
 		if (6 > where.trim().length()) {
 			where = "";
 		}
 		String selectSql = "select id as id, img_url as imgUrl, des as des,"
-				+ "price as price, days as days from tb_route " + where + " order by id desc";
+				+ "price as price, days as days,name as name,leader as leader from tb_route " + where + " order by id desc";
 		return this.getJdbcTemplate().queryForList(selectSql);
 	}
 
