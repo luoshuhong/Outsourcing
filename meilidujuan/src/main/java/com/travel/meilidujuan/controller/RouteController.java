@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.travel.meilidujuan.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,13 +19,15 @@ import com.alibaba.fastjson.JSONObject;
 import com.travel.meilidujuan.model.Route;
 import com.travel.meilidujuan.service.RouteService;
 import com.travel.meilidujuan.util.RequestUtils;
+import redis.clients.jedis.Jedis;
 
 @Controller
 @RequestMapping("/route")
 public class RouteController {
 	@Autowired
 	private RouteService routeService;
-	
+	private Jedis cache = RedisUtil.getInstance();
+
 	@RequestMapping(method=RequestMethod.POST)
     @ResponseBody
     public String add(HttpServletRequest request, HttpServletResponse response){
@@ -80,13 +83,27 @@ public class RouteController {
     @ResponseBody
     public String query(HttpServletRequest request, HttpServletResponse response){
 		try {
+            List<Map<String, Object>> list =null;
 			Route route = this.wrap(request);
-			List<Map<String, Object>> list = this.routeService.query(route);
-			if (null != list) {
-				return RequestUtils.successReturn(JSONArray.toJSONString(list));
-			} else {
-				return RequestUtils.successReturn("");
-			}
+            if(cache.get("route")==null||"".equals(cache.get("route"))){
+                list = this.routeService.query(route);
+                cache.set("route",JSONArray.toJSONString(list));
+                cache.expire("route",60*60*24);
+                if (null != list) {
+                    return RequestUtils.successReturn(JSONArray.toJSONString(list));
+                } else {
+                    return RequestUtils.successReturn("");
+                }
+            }else{
+                JSONArray jsonObject = JSONArray.parseArray(cache.get("route"));
+                System.out.println("从缓存中取数据");
+                if (null != jsonObject) {
+                    return RequestUtils.successReturn(JSONArray.toJSONString(jsonObject));
+                } else {
+                    return RequestUtils.successReturn("");
+                }
+            }
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			return RequestUtils.failReturn(e.getMessage());

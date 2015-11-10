@@ -49,7 +49,7 @@ public class AnswerQuestionDao extends JdbcDaoSupport implements DaoInter<Answer
 		}
 				
 		String selectSql = "select id as id, answer as answer,"
-				+ "question as question  from tb_user " + where + " order by id desc";
+				+ "question as question  from tb_answer_question " + where + " order by id desc";
 		return this.getJdbcTemplate().queryForList(selectSql);
 	}
 	
